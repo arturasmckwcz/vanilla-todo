@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer type="module" src="script.js"></script>
+    <title>TODO App</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">TODO App</h1>
+      <input id="input" class="input" placeholder="Enter what to do" />
+      <a id="enter" class="button" href="#">Enter</a>
+      <a id="completed" class="button" href="#">Clear Completed</a>
+      <a id="clear" class="button" href="#">Clear Storage</a>
+      <a id="debug" class="button" href="#">DEBUG</a>
+      <p><span id="left">0</span> left to do</p>
+      <div class="filters">
+        <input type="radio" name="filters" id="option1" value="all" />
+        <label for="option1">All</label>
+
+        <input type="radio" name="filters" id="option2" value="not_completed" />
+        <label for="option2">Not completed</label>
+
+        <input type="radio" name="filters" id="option3" value="completed" />
+        <label for="option3">Completed</label>
+      </div>
+      <ul id="list"></ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+:root {
+  --color-dark: black;
+  --color-light: white;
+  --color-shadow: gray;
+}
+
+body {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightgrey;
+}
+
+.container {
+  width: 45rem;
+  margin: 3rem auto;
+  padding: 3rem;
+  box-shadow: 5px 3px 3px var(--color-shadow);
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+.title {
+  text-align: center;
+}
+
+.input {
+  color: var(--color-dark);
+  border: solid 1px var(--color-shadow);
+  padding: 0.4rem 1rem 0.3rem 1rem;
+}
+
+.button {
+  color: var(--color-dark);
+  text-decoration: none;
+  border: solid 1px var(--color-shadow);
+  padding: 0.3rem 1rem;
+}
