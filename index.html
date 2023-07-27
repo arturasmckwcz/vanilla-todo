@@ -10,11 +10,13 @@
   <body>
     <div class="container">
       <h1 class="title">TODO App</h1>
-      <input id="input" class="input" placeholder="Enter what to do" />
-      <a id="enter" class="button" href="#">Enter</a>
-      <a id="completed" class="button" href="#">Clear Completed</a>
-      <a id="clear" class="button" href="#">Clear Storage</a>
-      <a id="debug" class="button" href="#">DEBUG</a>
+      <form id="form">
+        <input id="input" class="input" placeholder="Enter what to do" />
+        <button id="enter" class="button" type="submit">Enter</button>
+        <button id="completed" class="button" href="#">Clear Completed</button>
+        <button id="clear" class="button" href="#">Clear Storage</button>
+        <button id="debug" class="button" href="#">DEBUG</button>
+      </form>
       <p><span id="left">0</span> left to do</p>
       <div class="filters">
         <input type="radio" name="filters" id="option1" value="all" />
