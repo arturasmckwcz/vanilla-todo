@@ -27,10 +27,11 @@ body {
 .input {
   color: var(--color-dark);
   border: solid 1px var(--color-shadow);
-  padding: 0.4rem 1rem 0.3rem 1rem;
+  padding: 0.3rem 1rem;
 }
 
 .button {
+  background-color: var(--color-light);
   color: var(--color-dark);
   text-decoration: none;
   border: solid 1px var(--color-shadow);
