@@ -70,7 +70,7 @@ function render() {
         : !item.completed
     )
     .map((item) => {
-      return `<li><input type="checkbox" ${item.completed ? "checked" : ""}/> ${
+      return `<li class="todo"><input type="checkbox" ${item.completed ? "checked" : ""}/> ${
         item.title
       }</li>`;
     })

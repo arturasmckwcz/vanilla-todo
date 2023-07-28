@@ -57,6 +57,14 @@ body {
   list-style: none;
 }
 
+.todo {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: .2rem;
+  padding: .2rem 0;
+}
+
 .debug {
   display: block;
   /* display: none; */
