@@ -5,7 +5,6 @@ const FILTER_KEY = "filter";
 
 const form = document.getElementById("form");
 const input = document.getElementById("input");
-const enter = document.getElementById("enter");
 const completed = document.getElementById("completed");
 const left = document.getElementById("left");
 const list = document.getElementById("list");
@@ -27,7 +26,8 @@ document.querySelector(`input[value=${filter.payload}]`).checked = true;
 
 render();
 
-form.addEventListener("submit", () => {
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
   const title = input.value;
   input.value = null;
   if (title === "") return;

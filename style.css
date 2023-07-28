@@ -20,8 +20,22 @@ body {
   background-color: var(--color-light);
 }
 
+.header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem;
+}
+
 .title {
   text-align: center;
+  grid-column: 1 / span 3;
+}
+
+.form {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
 }
 
 .input {
@@ -36,4 +50,14 @@ body {
   text-decoration: none;
   border: solid 1px var(--color-shadow);
   padding: 0.3rem 1rem;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.debug {
+  display: block;
+  /* display: none; */
 }

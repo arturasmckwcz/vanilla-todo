@@ -9,26 +9,28 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="title">TODO App</h1>
-      <form id="form">
-        <input id="input" class="input" placeholder="Enter what to do" />
-        <button id="enter" class="button" type="submit">Enter</button>
-        <button id="completed" class="button" href="#">Clear Completed</button>
-        <button id="clear" class="button" href="#">Clear Storage</button>
-        <button id="debug" class="button" href="#">DEBUG</button>
-      </form>
+      <div class="header">
+        <h1 class="title">TODO App</h1>
+        <form id="form" class="form">
+          <input id="input" class="input" placeholder="Enter what to do" />
+          <button id="enter" class="button" type="submit">Enter</button>
+        </form>
+        <button id="completed" class="button">Clear Completed</button>
+        <div class="debug">
+          <button id="clear" class="button">Clear Storage</button>
+          <button id="debug" class="button">DEBUG</button>
+        </div>
+      </div>
       <p><span id="left">0</span> left to do</p>
       <div class="filters">
         <input type="radio" name="filters" id="option1" value="all" />
         <label for="option1">All</label>
-
         <input type="radio" name="filters" id="option2" value="not_completed" />
         <label for="option2">Not completed</label>
-
         <input type="radio" name="filters" id="option3" value="completed" />
         <label for="option3">Completed</label>
       </div>
-      <ul id="list"></ul>
+      <ul class="list" id="list"></ul>
     </div>
   </body>
 </html>
