@@ -70,9 +70,9 @@ function render() {
         : !item.completed
     )
     .map((item) => {
-      return `<li class="todo"><input type="checkbox" ${item.completed ? "checked" : ""}/> ${
-        item.title
-      }</li>`;
+      return `<li class="todo ${item.completed ? "completed" : ""}"><input type="checkbox" ${
+        item.completed ? "checked" : ""
+      }/> ${item.title}</li>`;
     })
     .join("");
   const checkBoxes = list.querySelectorAll('input[type="checkbox"]');

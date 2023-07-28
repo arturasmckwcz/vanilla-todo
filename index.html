@@ -23,12 +23,23 @@
       </div>
       <p><span id="left">0</span> left to do</p>
       <div class="filters">
-        <input type="radio" name="filters" id="option1" value="all" />
-        <label for="option1">All</label>
-        <input type="radio" name="filters" id="option2" value="not_completed" />
-        <label for="option2">Not completed</label>
-        <input type="radio" name="filters" id="option3" value="completed" />
-        <label for="option3">Completed</label>
+        <span>
+          <input type="radio" name="filters" id="option1" value="all" />
+          <label for="option1">All</label>
+        </span>
+        <span>
+          <input
+            type="radio"
+            name="filters"
+            id="option2"
+            value="not_completed"
+          />
+          <label for="option2">Not completed</label>
+        </span>
+        <span>
+          <input type="radio" name="filters" id="option3" value="completed" />
+          <label for="option3">Completed</label>
+        </span>
       </div>
       <ul class="list" id="list"></ul>
     </div>

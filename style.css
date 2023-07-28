@@ -26,6 +26,10 @@ body {
   gap: 1rem;
 }
 
+.header h1 {
+  margin-top: 0;
+}
+
 .title {
   text-align: center;
   grid-column: 1 / span 3;
@@ -52,9 +56,21 @@ body {
   padding: 0.3rem 1rem;
 }
 
+.filters {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
 .list {
   padding: 0;
+  margin-bottom: 0;
   list-style: none;
+}
+
+.filters input,
+.list input {
+  margin-left: 0;
 }
 
 .todo {
@@ -63,6 +79,11 @@ body {
   align-items: start;
   gap: .2rem;
   padding: .2rem 0;
+}
+
+.completed {
+  color: var(--color-shadow);
+  text-decoration: line-through;
 }
 
 .debug {
