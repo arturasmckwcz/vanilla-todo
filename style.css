@@ -2,6 +2,7 @@
   --color-dark: black;
   --color-light: white;
   --color-shadow: gray;
+  --color-hover: lightgrey;
 }
 
 body {
@@ -56,6 +57,10 @@ body {
   padding: 0.3rem 1rem;
 }
 
+.button:hover {
+  background-color: var(--color-hover);
+}
+
 .filters {
   display: flex;
   flex-direction: row;
@@ -83,7 +88,7 @@ body {
 
 .completed {
   color: var(--color-shadow);
-  text-decoration: line-through;
+  text-decoration: var(--color-hover);
 }
 
 .debug {
