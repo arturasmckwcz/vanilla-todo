@@ -5,7 +5,7 @@ export function createState({ node, key, initialState, render }) {
   };
 
   function setState(newState) {
-    state.payload = newState;
+    state.payload = newState.payload;
     localStorage.setItem(key, JSON.stringify(state.payload));
     _render();
   }

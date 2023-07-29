@@ -32,7 +32,8 @@ form.addEventListener("submit", (e) => {
   input.value = null;
   if (title === "") return;
 
-  setTodos([...todos.payload, { title, completed: false }]);
+  todos.payload = [...todos.payload, { title, completed: false }];
+  setTodos(todos);
 });
 
 completed.addEventListener("click", () => {
@@ -70,16 +71,18 @@ function render() {
         : !item.completed
     )
     .map((item) => {
-      return `<li class="todo ${item.completed ? "completed" : ""}"><input type="checkbox" ${
-        item.completed ? "checked" : ""
-      }/> ${item.title}</li>`;
+      return `<li class="todo ${
+        item.completed ? "completed" : ""
+      }"><input type="checkbox" ${item.completed ? "checked" : ""}/> ${
+        item.title
+      }</li>`;
     })
     .join("");
   const checkBoxes = list.querySelectorAll('input[type="checkbox"]');
   checkBoxes.forEach((checkbox, index) => {
     checkbox.addEventListener("change", () => {
       todos.payload[index].completed = checkbox.checked;
-      setTodos(todos.payload);
+      setTodos(todos);
     });
   });
   left.innerText = todos.payload.filter(({ completed }) => !completed).length;
