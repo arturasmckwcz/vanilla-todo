@@ -82,13 +82,13 @@ body {
   display: flex;
   flex-direction: row;
   align-items: start;
-  gap: .2rem;
-  padding: .2rem 0;
+  gap: 0.2rem;
+  padding: 0.2rem 0;
 }
 
 .completed {
   color: var(--color-shadow);
-  text-decoration: var(--color-hover);
+  text-decoration: line-through;
 }
 
 .debug {
