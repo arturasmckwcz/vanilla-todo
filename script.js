@@ -60,7 +60,6 @@ document.getElementById('clear').addEventListener('click', () => {
   if (confirm('Are you sure?')) {
     sessionStorage.clear(TODOS_KEY);
     sessionStorage.clear(FILTER_KEY);
-    location.reload();
   }
 });
 
@@ -98,18 +97,8 @@ function render() {
   left.innerText = todos.payload.filter(({ completed }) => !completed).length;
 }
 
-function saveTodosToJSONStorage() {
-  fetch(JSON_STORAGE_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', token: JSON_STORAGE_TOKEN },
-    body: JSON.stringify({
-      [JSON_STORAGE_KEY]: sessionStorage.getItem(TODOS_KEY),
-    }),
-  }).catch(console.error);
-}
-
 window.addEventListener('load', () => {
-  console.log('DEBUG:load:todos', todos);
+  if (todos.payload.length) return;
   const url = `${JSON_STORAGE_URL}/${JSON_STORAGE_KEY}`;
   fetch(url, {
     headers: { token: JSON_STORAGE_TOKEN },
@@ -127,4 +116,16 @@ window.addEventListener('load', () => {
     .catch(console.error);
 });
 
-window.addEventListener('unload', saveTodosToJSONStorage);
+window.addEventListener('beforeunload', () => {
+  saveTodosToJSONStorage();
+});
+
+function saveTodosToJSONStorage(flag) {
+  fetch(JSON_STORAGE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', token: JSON_STORAGE_TOKEN },
+    body: JSON.stringify({
+      [JSON_STORAGE_KEY]: sessionStorage.getItem(TODOS_KEY),
+    }),
+  }).catch(console.error);
+}
