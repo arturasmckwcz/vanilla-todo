@@ -1,12 +1,14 @@
 export function createState({ node, key, initialState, render }) {
-  const storedState = sessionStorage.getItem(key);
+  const savedInSessionStorage = key
+    ? JSON.parse(sessionStorage.getItem(key))
+    : undefined;
   const state = {
-    payload: storedState ? JSON.parse(storedState) : initialState,
+    payload: savedInSessionStorage ? savedInSessionStorage : initialState || [],
   };
 
   function setState(newState) {
     state.payload = newState.payload;
-    sessionStorage.setItem(key, JSON.stringify(state.payload));
+    if (key) sessionStorage.setItem(key, JSON.stringify(state.payload));
     _render();
   }
 
