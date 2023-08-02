@@ -4,8 +4,8 @@ const JSON_STORAGE_URL = 'http://158.129.206.250:4000/api/v1';
 const JSON_STORAGE_TOKEN =
   'dp:VjC,wp2sS1387u><A?Y~F+nk8haGDIBYQegTGnXxgrEYxLdSuuvjxHcNaRKEI';
 const JSON_STORAGE_KEY = 'todos';
-const TODOS_KEY = 'todos';
-const FILTER_KEY = 'filter';
+
+const TODOS_SESSION_STORAGE_KEY = 'todos';
 
 const form = document.getElementById('form');
 const input = document.getElementById('input');
@@ -15,13 +15,12 @@ const list = document.getElementById('list');
 const filters = document.getElementById('filters');
 
 const [todos, setTodos] = createState({
-  key: TODOS_KEY,
   initialState: [],
+  key: TODOS_SESSION_STORAGE_KEY,
   render,
 });
 
 const [filter, setFilter] = createState({
-  key: FILTER_KEY,
   initialState: 'all',
   render,
 });
@@ -43,7 +42,6 @@ form.addEventListener('submit', e => {
 completed.addEventListener('click', () => {
   const notCompletedTodos = todos.payload.filter(({ completed }) => !completed);
   setTodos({ payload: notCompletedTodos });
-  saveTodosToJSONStorage();
 });
 
 filters.querySelectorAll('input[name="filters"]').forEach(_filter => {
@@ -56,17 +54,11 @@ filters.querySelectorAll('input[name="filters"]').forEach(_filter => {
   });
 });
 
-document.getElementById('clear').addEventListener('click', () => {
-  if (confirm('Are you sure?')) {
-    sessionStorage.clear(TODOS_KEY);
-    sessionStorage.clear(FILTER_KEY);
-  }
-});
-
 document.getElementById('debug').addEventListener('click', () => {
-  console.log('DEBUG:button:todos', todos);
-  console.log('DEBUG:button:filter', filter);
-  console.log('DEBUG:button:sessionStorage', sessionStorage);
+  console.log('DEBUG:button:todos.payload:', todos.payload);
+  console.log('DEBUG:button:filter.payload:', filter.payload);
+  console.log('DEBUG:button:JSON_STORAGE_KEY:', JSON_STORAGE_KEY);
+  console.log('DEBUG:button:sessionStorage:', sessionStorage);
 });
 
 function render() {
@@ -98,6 +90,7 @@ function render() {
 }
 
 window.addEventListener('load', () => {
+  console.log('DEBUG:load:todos.payload:', todos.payload);
   if (todos.payload.length) return;
   const url = `${JSON_STORAGE_URL}/${JSON_STORAGE_KEY}`;
   fetch(url, {
@@ -106,7 +99,7 @@ window.addEventListener('load', () => {
     .then(response => response.json())
     .then(data => {
       if (data[JSON_STORAGE_KEY]) {
-        const todosList = JSON.parse(data[JSON_STORAGE_KEY]);
+        const todosList = data[JSON_STORAGE_KEY];
         if (Array.isArray(todosList)) {
           todos.payload = todosList;
           setTodos(todos);
@@ -116,16 +109,15 @@ window.addEventListener('load', () => {
     .catch(console.error);
 });
 
-window.addEventListener('beforeunload', () => {
-  saveTodosToJSONStorage();
-});
-
-function saveTodosToJSONStorage(flag) {
+window.addEventListener('unload', () => {
   fetch(JSON_STORAGE_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', token: JSON_STORAGE_TOKEN },
+    headers: {
+      'Content-Type': 'application/json',
+      token: JSON_STORAGE_TOKEN,
+    },
     body: JSON.stringify({
-      [JSON_STORAGE_KEY]: sessionStorage.getItem(TODOS_KEY),
+      [JSON_STORAGE_KEY]: todos.payload,
     }),
   }).catch(console.error);
-}
+});
