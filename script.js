@@ -1,8 +1,7 @@
 import { createState } from './state.js';
 
 const JSON_STORAGE_URL = 'http://158.129.206.250:4000/api/v1';
-const JSON_STORAGE_TOKEN =
-  'dp:VjC,wp2sS1387u><A?Y~F+nk8haGDIBYQegTGnXxgrEYxLdSuuvjxHcNaRKEI';
+const JSON_STORAGE_TOKEN = 'any random string for auth';
 const JSON_STORAGE_KEY = 'todos';
 
 const TODOS_SESSION_STORAGE_KEY = 'todos';
@@ -90,7 +89,6 @@ function render() {
 }
 
 window.addEventListener('load', () => {
-  console.log('DEBUG:load:todos.payload:', todos.payload);
   if (todos.payload.length) return;
   const url = `${JSON_STORAGE_URL}/${JSON_STORAGE_KEY}`;
   fetch(url, {
